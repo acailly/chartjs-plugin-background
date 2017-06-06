@@ -1,0 +1,28 @@
+{
+  "name": "chartjs-plugin-background",
+  "version": "1.0.0",
+  "description": "Plugin for chart.js to set the background color of a chart",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "rollup -c"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/acailly/chartjs-plugin-background.git"
+  },
+  "author": "acailly",
+  "license": "WTFPL",
+  "bugs": {
+    "url": "https://github.com/acailly/chartjs-plugin-background/issues"
+  },
+  "homepage": "https://github.com/acailly/chartjs-plugin-background#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "babel-plugin-external-helpers": "^6.22.0",
+    "babel-preset-latest": "^6.24.1",
+    "babelrc-rollup": "^3.0.0",
+    "rollup": "^0.42.0",
+    "rollup-plugin-babel": "^2.7.1"
+  }
+}
