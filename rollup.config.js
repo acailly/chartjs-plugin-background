@@ -7,6 +7,8 @@ export default {
   plugins: [
     babel(babelrc()),
   ],
-  format: 'cjs',
-  dest: 'index.js'
+  format: 'umd',
+  moduleName: 'chartjs-plugin-background',
+  dest: 'index.js',
+  external: [ 'chart.js' ]
 };

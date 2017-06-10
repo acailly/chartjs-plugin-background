@@ -40,7 +40,7 @@ Here is the killing feature (in `src/chartjs-plugin-background.js`):
 
 ```javascript
 
-INSERT CODE HERE
+TODO INSERT CODE
 
 ```
 
@@ -65,21 +65,16 @@ I add `rollup` to the dev dependencies:
 Then, I create the file `rollup.config.js` in the project root: 
 
 ```javascript
-import babel from 'rollup-plugin-babel';
-import babelrc from 'babelrc-rollup';
 
-// rollup.config.js
-export default {
-  entry: 'src/chartjs-plugin-background.js',
-  plugins: [
-    babel(babelrc()),
-  ],
-  format: 'cjs',
-  dest: 'index.js'
-};
+TODO INSERT CODE
+
 ```
 
-and the file `.babelrc`:
+Two things here worth mentionning:
+- I choose `umd` format instead of `cjs` because my module is a browser module
+- I set `chart.js` as an external dependency
+
+Then, I create the file `.babelrc`:
 
 ```json
 {
@@ -111,13 +106,36 @@ Executing `yarn build` generates `index.js`. Good.
 
 Now it's time to publish the module on npmjs.
 
-TODO
+But first let's create a user account on npm with `npm adduser`, I'll have to set:
+- your username
+- your password
+- your email
+
+Once done, all I have to do is `npm publish` to publish.
+
+Let's have a look on https://www.npmjs.com/package/chartjs-plugin-background, all right!
+
 
 ## Test it
 
 ### A demo
 
-TODO
+Sometime when I find a module on npm, I want to try it quickly. And that's possible when there is some demo code in the module source code. Let's add that to my module!
+
+The demo will be in `demo` folder, how clever!
+
+It is a simple html file importing `chart.js` and my module and displaying some charts with custom background:
+
+```html
+
+TODO INSERT CODE HERE
+
+```
+
+### ... a codepen
+
+TODO S'inspirer de https://github.com/chartjs/chartjs-plugin-zoom 
+
 
 ### ...and some unit tests
 
