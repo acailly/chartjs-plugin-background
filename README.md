@@ -61,6 +61,7 @@ I add `rollup` to the dev dependencies:
 - `yarn add babelrc-rollup --dev`
 - `yarn add babel-plugin-external-helpers --dev`
 - `yarn add babel-preset-latest --dev`
+- `yarn add rollup-plugin-uglify --dev`
 
 Then, I create the file `rollup.config.js` in the project root: 
 
@@ -70,11 +71,12 @@ TODO INSERT CODE
 
 ```
 
-Two things here worth mentionning:
+Some things here worth mentionning:
 - I choose `umd` format instead of `cjs` because my module is a browser module
 - I set `chart.js` as an external dependency
+- I use two plugins: `babel` to convert from ES6 to ES5, and `uglify` to minify the final module 
 
-Then, I create the file `.babelrc`:
+Then, I create the file `.babelrc` to configure the ES6 to ES5 conversion:
 
 ```json
 {
