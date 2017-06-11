@@ -132,12 +132,29 @@ TODO INSERT CODE HERE
 
 ```
 
-### ... a codepen
+That's it! Now I can clone the repo, run `yarn build`, open `demo/index.html` and I see if this lib is what I'm looking for. You think it's a bit too much, mee too.
 
-TODO S'inspirer de https://github.com/chartjs/chartjs-plugin-zoom 
+### ... a JSFiddle
 
+Demo in sources is good for testing the lib while I'm developping it. 
+For potential future users, a jsfiddle (or codepen or whatever) is much simpler.
+
+Creating a JSFiddle is much like creating an HTML demo page while:
+- putting css in the `CSS` panel instead of in a `<style>` markup
+- putting javascript code in the `CSS` panel instead of in a `<script>` markup
+- putting javascript external scripts in the `External resources` settings instead of in a `<script>` markup
+
+Concerning the external scripts, I want to load the script directly from my github but if I put https://github.com/acailly/chartjs-plugin-background/blob/master/index.js in the external resource link, I have an error saying that 'its MIME type ('text/html') is not executable, and strict MIME type checking is enabled'.
+
+So I copy that URL and paste it in http://rawgit.com/ which gives me another URL that works perfectly in JSFiddle.
+
+Now everyone can go to https://jsfiddle.net/2s83tmxL/ and play with the lib!
 
 ### ...and some unit tests
+
+It's missing something here. Even if this lib doesn't do much, it would be nice to have some unit testing.
+
+
 
 TODO Jest
 
