@@ -60,7 +60,7 @@ I add `rollup` to the dev dependencies:
 - `yarn add rollup-plugin-babel --dev`
 - `yarn add babelrc-rollup --dev`
 - `yarn add babel-plugin-external-helpers --dev`
-- `yarn add babel-preset-latest --dev`
+- `yarn add babel-preset-es2015 --dev`
 - `yarn add rollup-plugin-uglify --dev`
 
 Then, I create the file `rollup.config.js` in the project root: 
@@ -156,11 +156,63 @@ Now everyone can go to https://jsfiddle.net/2s83tmxL/ and play with the lib!
 
 It's missing something here. Even if this lib doesn't do much, it would be nice to have some unit testing.
 
+#### Write the test
+
+First thing to do that: add a test runner. I choose Jest (https://facebook.github.io/jest/) but again, it's more because I'm used to it, use whatever fits your need
+
+`yarn add jest --dev`
+
+Next step: create a test file `chartjs-plugin-background.test.js`
+
+```javascript
+
+TODO INSERT CODE HERE
+
+```
+
+... and a mock file for the `chart.js` dependency, that I put in `__mocks__/chart.js.js`:
+
+```javascript
+
+TODO INSERT CODE HERE
+
+```
+
+Final step, edit `package.json` to make the `test` script run the `jest` command:
+
+```json
+"test": "jest --watch"
+```
+
+and run the tests with `yarn test`
+
+#### ES6 to ES5... again?
+
+```
+SyntaxError: Unexpected token import
+```
+
+What? ES6 import are not supported? 
+
+I configured rollup to handle ES6 but rollup is used to produce the production bundle, not to run the tests.
+
+To add support for ES6 in Jest, I just have to install some dependencies: 
+- `yarn add babel-jest --dev` 
+- `yarn add regenerator-runtime --dev`
+
+Let's retry...
+
+`yarn test`
+
+It works!
 
 
-TODO Jest
+#### Setup continuous integration
 
 TODO Travis
+TODO - https://github.com/chartjs/chartjs-plugin-deferred/blob/master/.travis.yml
+TODO - https://github.com/chartjs/chartjs-plugin-zoom/blob/master/.travis.yml
+TODO - https://github.com/Okazari/Rythm.js/blob/master/.travis.yml
 
 
 ## Open to others
@@ -173,6 +225,11 @@ Here is some questions you should answer.
 
 TODO editorconfig
 
+### Contributing guidelines
+
+TODO s'inspirer de https://github.com/chartjs/chartjs-plugin-annotation/blob/master/CONTRIBUTING.md
+
+
 ### TODO
 
 ## What else?
@@ -181,6 +238,10 @@ TODO editorconfig
 
 TODO Badges
 
+
+## Pfiouu!!! Do I need to do all of that everytime!?
+
+TODO Creer create-lib
 
 
 
