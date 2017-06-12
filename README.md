@@ -221,6 +221,8 @@ TODO INSERT CODE HERE
 
 ```
 
+The travis build starts when the file is pushed, we can see everything is green, good.
+
 TODO Travis
 TODO - https://github.com/chartjs/chartjs-plugin-deferred/blob/master/.travis.yml
 TODO - https://github.com/chartjs/chartjs-plugin-zoom/blob/master/.travis.yml
