@@ -209,6 +209,18 @@ It works!
 
 #### Setup continuous integration
 
+Now I have tests, let's add some continuous integration so that I can be sure tests are always green
+
+I don't have a Travis account so I create one on https://travis-ci.org/ with the `Sign in with Github` 
+
+Once done, I "Flick the repository switch on" for my repository and I add the following `.travis.yml` file to git:
+
+```yaml
+
+TODO INSERT CODE HERE
+
+```
+
 TODO Travis
 TODO - https://github.com/chartjs/chartjs-plugin-deferred/blob/master/.travis.yml
 TODO - https://github.com/chartjs/chartjs-plugin-zoom/blob/master/.travis.yml
