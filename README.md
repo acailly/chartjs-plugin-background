@@ -1,6 +1,9 @@
 
 # create-lib
 
+[![Build Status](https://travis-ci.org/acailly/chartjs-plugin-background.svg?branch=master)](https://travis-ci.org/acailly/chartjs-plugin-background)
+
+
 ## Why this lib ?
 
 I wanted to export a graph made with `chartjs` but the exported image had no background color, it was transparent.
@@ -223,11 +226,9 @@ TODO INSERT CODE HERE
 
 The travis build starts when the file is pushed, we can see everything is green, good.
 
-TODO Travis
-TODO - https://github.com/chartjs/chartjs-plugin-deferred/blob/master/.travis.yml
-TODO - https://github.com/chartjs/chartjs-plugin-zoom/blob/master/.travis.yml
-TODO - https://github.com/Okazari/Rythm.js/blob/master/.travis.yml
+Now it's time to do a thing I've never done: add a badge
 
+I follow instructions of https://docs.travis-ci.com/user/status-images/ and voila, my first badge!
 
 ## Open to others
 
