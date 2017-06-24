@@ -4,7 +4,7 @@ node_js:
 
 script:
   - yarn run jest
-  - yarn run jest --coverage
+  - yarn run jest -- --coverage
   
 # Send coverage data to Coveralls
-after_script: "cat coverage/lcov.info | node_modules/coveralls/bin/coveralls.js"
+after_script: "node ./node_modules/coveralls/bin/coveralls.js -v < ./coverage/lcov.info"
