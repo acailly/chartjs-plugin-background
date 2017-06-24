@@ -238,7 +238,22 @@ Here is some questions you should answer.
 
 ### How should I format my code?
 
-TODO editorconfig
+There is many ways to define a formatting style for a project. 
+You can use EditorConfig for a widely supported solution: http://editorconfig.org/
+You can use ESLint (http://eslint.org/) with one of the many preset like the Airbnb one (https://github.com/airbnb/javascript)
+
+I choose to use standard JS (https://standardjs.com/) which is very opinionated but simple to setup  
+
+I install it with `yarn add standard@*`
+
+... and I make the `test` script to execute `standard` before `jest`:
+
+```
+"test": "standard --fix src/**.js && jest --watch",
+```
+
+Here I tell `standard` auto fix issues that can be, and ignore every thing outside `src/`
+
 
 ### Contributing guidelines
 

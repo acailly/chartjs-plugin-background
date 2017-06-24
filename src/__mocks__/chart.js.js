@@ -1,5 +1,5 @@
 export default {
-    pluginService: {
-        register: jest.fn()     
-    } 
+  pluginService: {
+    register: jest.fn()
+  }
 }
