@@ -1,9 +1,10 @@
 
-# create-lib
+# chartjs-plugin-background
 
 [![Build Status](https://img.shields.io/travis/acailly/chartjs-plugin-background.svg)](https://travis-ci.org/acailly/chartjs-plugin-background)
+[![Coveralls](https://img.shields.io/coveralls/acailly/chartjs-plugin-background.svg)](https://coveralls.io/github/acailly/chartjs-plugin-background)
 [![File size](https://img.shields.io/github/size/acailly/chartjs-plugin-background/index.js.svg)](https://github.com/acailly/chartjs-plugin-background)
-[![npm](https://img.shields.io/npm/v/chartjs-plugin-background.svg)](https://github.com/acailly/chartjs-plugin-background)
+[![npm](https://img.shields.io/npm/v/chartjs-plugin-background.svg)](https://www.npmjs.com/package/chartjs-plugin-background)
 [![downloads](https://img.shields.io/npm/dm/chartjs-plugin-background.svg)](https://github.com/acailly/chartjs-plugin-background)
 [![license](https://img.shields.io/npm/l/chartjs-plugin-background.svg)](https://spdx.org/licenses/WTFPL)
 
@@ -239,7 +240,7 @@ Now everyone can go to https://jsfiddle.net/2s83tmxL/ and play with the lib!
 
 It's missing something here. Even if this lib doesn't do much, it would be nice to have some unit testing.
 
-#### Write the test
+## Write the test
 
 First thing to do that: add a test runner. I choose Jest (https://facebook.github.io/jest/) but again, it's more because I'm used to it, use whatever fits your need
 
@@ -317,7 +318,7 @@ Final step, edit `package.json` to make the `test` script run the `jest` command
 
 and run the tests with `yarn test`
 
-#### ES6 to ES5... again?
+## ES6 to ES5... again?
 
 ```
 SyntaxError: Unexpected token import
@@ -337,7 +338,7 @@ Let's retry...
 
 It works!
 
-#### Coverage
+## Coverage
 
 Now tests works, let's ensure they cover all cases!
 
@@ -352,7 +353,7 @@ I run `yarn coverage`... 100%, good!
 How, there is a new `coverage` folder we don't want to push, I add this folder to `.gitignore`
 
 
-#### Setup continuous integration
+## Setup continuous integration
 
 Now I have tests, let's add some continuous integration so that I can be sure tests are always green
 
@@ -377,7 +378,7 @@ script:
 The travis build starts when the file is pushed, we can see everything is green, good.
 
 
-#### Coveralls
+## Coveralls
 
 Continuous integration is only passing tests, not checking coverage.
 
@@ -398,10 +399,10 @@ Then I add the following to `.travis.yml`:
 
 script:
   - yarn run jest
-  - yarn run jest --coverage
+  - yarn run jest -- --coverage
   
 # Send coverage data to Coveralls
-after_script: "cat coverage/lcov.info | node_modules/coveralls/bin/coveralls.js"
+after_script: "node ./node_modules/coveralls/bin/coveralls.js -v < ./coverage/lcov.info"
 
 ```
 
@@ -443,27 +444,19 @@ We love pull requests from everyone.
 
 Fork, then clone the repo:
 
-```
-git clone git@github.com:your-username/chartjs-plugin-background.git
-```
+  git clone git@github.com:your-username/chartjs-plugin-background.git
 
 Install dependencies:
 
-```
-yarn
-```
+  yarn
 
 Make sure the tests pass:
 
-```
-yarn test
-```
+  yarn test
 
 Make your change. Add tests for your change. Make the tests pass:
 
-```
-yarn test
-```
+  yarn test
 
 Push to your fork and submit a pull request.
 
@@ -501,23 +494,22 @@ I should add a `LICENSE.md` file to explain what this license is:
 ```
 
 
-### Add some badges!
+## Add some badges!
 
 The final touch, I now go to http://shields.io/ to add some badges to the readme file:
 
 ```
 [![Build Status](https://img.shields.io/travis/acailly/chartjs-plugin-background.svg)](https://travis-ci.org/acailly/chartjs-plugin-background)
+[![Coveralls](https://img.shields.io/coveralls/acailly/chartjs-plugin-background.svg)](https://coveralls.io/github/acailly/chartjs-plugin-background)
 [![File size](https://img.shields.io/github/size/acailly/chartjs-plugin-background/index.js.svg)](https://github.com/acailly/chartjs-plugin-background)
-[![npm](https://img.shields.io/npm/v/chartjs-plugin-background.svg)](https://github.com/acailly/chartjs-plugin-background)
+[![npm](https://img.shields.io/npm/v/chartjs-plugin-background.svg)](https://www.npmjs.com/package/chartjs-plugin-background)
 [![downloads](https://img.shields.io/npm/dm/chartjs-plugin-background.svg)](https://github.com/acailly/chartjs-plugin-background)
 [![license](https://img.shields.io/npm/l/chartjs-plugin-background.svg)](https://spdx.org/licenses/WTFPL)
 ```
 
-## Pfiouu!!! Do I need to do all of that everytime!?
+## Resources
 
-TODO Creer create-lib
-
-
+Mainly inspired by: https://medium.com/@jdaudier/how-to-create-and-publish-your-first-node-js-module-444e7585b738
 
 
 
