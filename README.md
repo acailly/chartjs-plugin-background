@@ -4,8 +4,8 @@
 [![Build Status](https://img.shields.io/travis/acailly/chartjs-plugin-background.svg)](https://travis-ci.org/acailly/chartjs-plugin-background)
 [![File size](https://img.shields.io/github/size/acailly/chartjs-plugin-background/index.js.svg)](https://github.com/acailly/chartjs-plugin-background)
 [![npm](https://img.shields.io/npm/v/chartjs-plugin-background.svg)](https://github.com/acailly/chartjs-plugin-background)
-[![npm](https://img.shields.io/npm/dm/localeval.svg)](https://github.com/acailly/chartjs-plugin-background)
-[![npm](https://img.shields.io/npm/l/chartjs-plugin-background.svg)](https://spdx.org/licenses/WTFPL)
+[![downloads](https://img.shields.io/npm/dm/chartjs-plugin-background.svg)](https://github.com/acailly/chartjs-plugin-background)
+[![license](https://img.shields.io/npm/l/chartjs-plugin-background.svg)](https://spdx.org/licenses/WTFPL)
 
 
 ## Why this lib ?
@@ -47,7 +47,25 @@ Here is the killing feature (in `src/chartjs-plugin-background.js`):
 
 ```javascript
 
-TODO INSERT CODE
+import Chart from 'chart.js'
+
+const plugin = {
+  beforeDraw: function (chartInstance) {
+    const {backgroundColor} = chartInstance.chart.options
+
+    if (backgroundColor) {
+      const ctx = chartInstance.chart.ctx
+      const canvas = chartInstance.chart.canvas
+
+      ctx.fillStyle = backgroundColor
+      ctx.fillRect(0, 0, canvas.width, canvas.height)
+    }
+  }
+}
+
+export default plugin
+Chart.pluginService.register(plugin)
+
 
 ```
 
@@ -74,7 +92,23 @@ Then, I create the file `rollup.config.js` in the project root:
 
 ```javascript
 
-TODO INSERT CODE
+import babel from 'rollup-plugin-babel'
+import babelrc from 'babelrc-rollup'
+import uglify from 'rollup-plugin-uglify'
+
+// rollup.config.js
+export default {
+  entry: 'src/chartjs-plugin-background.js',
+  plugins: [
+    babel(babelrc()),
+    uglify()
+  ],
+  format: 'umd',
+  moduleName: 'chartjs-plugin-background',
+  dest: 'index.js',
+  external: [ 'chart.js' ]
+}
+
 
 ```
 
@@ -137,7 +171,49 @@ It is a simple html file importing `chart.js` and my module and displaying some 
 
 ```html
 
-TODO INSERT CODE HERE
+<html>
+    <head>
+        <title>Demo for chartjs-plugin-background</title>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.bundle.js"></script>
+        <script src="../index.js"></script>
+        <style>
+            .myChartDiv {
+                max-width: 600px;
+                max-height: 400px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="myChartDiv">
+            <canvas id="myChart" width="600" height="400"></canvas>
+        </div>
+        <script>
+            var ctx = document.getElementById("myChart");
+            var myChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+                    datasets: [{
+                        label: '# of letters',
+                        data: [3, 4, 6, 5, 6, 6]
+                    }]
+                },
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero:true
+                            }
+                        }]
+                    },
+                    // Background option
+                    backgroundColor: 'pink'
+                }
+            });
+        </script>
+    </body>
+</html>
 
 ```
 
@@ -173,7 +249,50 @@ Next step: create a test file `chartjs-plugin-background.test.js`
 
 ```javascript
 
-TODO INSERT CODE HERE
+import plugin from './chartjs-plugin-background'
+
+describe('Chart.js background plugin', () => {
+  it('should not fill the background rect if backgroundColor option is not set', () => {
+    const fillRectMock = jest.fn()
+    const chartInstance = {
+      chart: {
+        ctx: {
+          fillRect: fillRectMock
+        },
+        options: {
+          backgroundColor: null
+        }
+      }
+    }
+
+    plugin.beforeDraw(chartInstance)
+
+    expect(fillRectMock.mock.calls.length).toBe(0)
+  })
+
+  it('should fill the background rect with color set in backgroundColor option', () => {
+    const fillRectMock = jest.fn()
+    const chartInstance = {
+      chart: {
+        canvas: {
+          width: 200,
+          height: 200
+        },
+        ctx: {
+          fillRect: fillRectMock
+        },
+        options: {
+          backgroundColor: 'pink'
+        }
+      }
+    }
+
+    plugin.beforeDraw(chartInstance)
+
+    expect(fillRectMock.mock.calls.length).toBe(1)
+  })
+})
+
 
 ```
 
@@ -181,7 +300,12 @@ TODO INSERT CODE HERE
 
 ```javascript
 
-TODO INSERT CODE HERE
+export default {
+  pluginService: {
+    register: jest.fn()
+  }
+}
+
 
 ```
 
@@ -224,7 +348,13 @@ Once done, I "Flick the repository switch on" for my repository and I add the fo
 
 ```yaml
 
-TODO INSERT CODE HERE
+language: node_js
+node_js:
+  - "node"
+
+script:
+  - yarn run jest
+
 
 ```
 
@@ -266,7 +396,45 @@ It can happen that someone wants to fix a bug in that small lib of mine.
 In that case, the usage is to read the `CONTRIBUTING.md` file to know how to contribute to a project.
 
 ```
-TODO Copier contenu
+# Contributing
+
+We love pull requests from everyone. 
+
+Fork, then clone the repo:
+
+```
+git clone git@github.com:your-username/chartjs-plugin-background.git
+```
+
+Install dependencies:
+
+```
+yarn
+```
+
+Make sure the tests pass:
+
+```
+yarn test
+```
+
+Make your change. Add tests for your change. Make the tests pass:
+
+```
+yarn test
+```
+
+Push to your fork and submit a pull request.
+
+Some things that will increase the chance that your pull request is accepted:
+
+* Write tests.
+* Write a [good commit message][commit].
+* Write a [good pull request][pr].
+
+[commit]: https://chris.beams.io/posts/git-commit/
+[pr]: https://github.com/blog/1943-how-to-write-the-perfect-pull-request
+
 ```
 
 ### License
@@ -297,16 +465,17 @@ and... a badge!
 [![License](https://upload.wikimedia.org/wikipedia/commons/0/0a/WTFPL_badge.svg)](https://spdx.org/licenses/WTFPL) 
 ```
 
+### Add some badges!
 
-## What else?
+The final touch, I now go to http://shields.io/ to add some badges to the readme file:
 
-### Some more badges!
-
-#### 
-
-
-TODO Badges
-
+```
+[![Build Status](https://img.shields.io/travis/acailly/chartjs-plugin-background.svg)](https://travis-ci.org/acailly/chartjs-plugin-background)
+[![File size](https://img.shields.io/github/size/acailly/chartjs-plugin-background/index.js.svg)](https://github.com/acailly/chartjs-plugin-background)
+[![npm](https://img.shields.io/npm/v/chartjs-plugin-background.svg)](https://github.com/acailly/chartjs-plugin-background)
+[![downloads](https://img.shields.io/npm/dm/chartjs-plugin-background.svg)](https://github.com/acailly/chartjs-plugin-background)
+[![license](https://img.shields.io/npm/l/chartjs-plugin-background.svg)](https://spdx.org/licenses/WTFPL)
+```
 
 ## Pfiouu!!! Do I need to do all of that everytime!?
 
