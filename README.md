@@ -337,6 +337,20 @@ Let's retry...
 
 It works!
 
+#### Coverage
+
+Now tests works, let's ensure they cover all cases!
+
+Jest embed a coverage tool, I can activate it with a ne script:
+ 
+```
+"coverage": "jest --coverage",
+```
+
+I run `yarn coverage`... 100%, good!
+
+How, there is a new `coverage` folder we don't want to push, I add this folder to `.gitignore`
+
 
 #### Setup continuous integration
 
@@ -354,15 +368,42 @@ node_js:
 
 script:
   - yarn run jest
+  - yarn run jest --coverage
+  
 
 
 ```
 
 The travis build starts when the file is pushed, we can see everything is green, good.
 
-Now it's time to do a thing I've never done: add a badge
 
-I follow instructions of https://docs.travis-ci.com/user/status-images/ and voila, my first badge!
+#### Coveralls
+
+Continuous integration is only passing tests, not checking coverage.
+
+I create a free account on Coveralls (https://coveralls.io/) and activate it on my repo.
+
+Now I want Travis to check coverage, I install the npm package `coveralls`:
+
+```
+yarn add coveralls --dev
+```
+
+Then I add the following to `.travis.yml`: 
+
+
+```yaml
+
+...
+
+script:
+  - yarn run jest
+  - yarn run jest --coverage
+  
+# Send coverage data to Coveralls
+after_script: "cat coverage/lcov.info | node_modules/coveralls/bin/coveralls.js"
+
+```
 
 ## Open to others
 
@@ -459,11 +500,6 @@ I should add a `LICENSE.md` file to explain what this license is:
   0. You just DO WHAT THE FUCK YOU WANT TO.
 ```
 
-and... a badge!
-
-```
-[![License](https://upload.wikimedia.org/wikipedia/commons/0/0a/WTFPL_badge.svg)](https://spdx.org/licenses/WTFPL) 
-```
 
 ### Add some badges!
 
