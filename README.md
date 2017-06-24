@@ -1,7 +1,11 @@
 
 # create-lib
 
-[![Build Status](https://travis-ci.org/acailly/chartjs-plugin-background.svg?branch=master)](https://travis-ci.org/acailly/chartjs-plugin-background)
+[![Build Status](https://img.shields.io/travis/acailly/chartjs-plugin-background.svg)](https://travis-ci.org/acailly/chartjs-plugin-background)
+[![File size](https://img.shields.io/github/size/acailly/chartjs-plugin-background/index.js.svg)](https://github.com/acailly/chartjs-plugin-background)
+[![npm](https://img.shields.io/npm/v/chartjs-plugin-background.svg)](https://github.com/acailly/chartjs-plugin-background)
+[![npm](https://img.shields.io/npm/dm/localeval.svg)](https://github.com/acailly/chartjs-plugin-background)
+[![npm](https://img.shields.io/npm/l/chartjs-plugin-background.svg)](https://spdx.org/licenses/WTFPL)
 
 
 ## Why this lib ?
@@ -286,6 +290,13 @@ I should add a `LICENSE.md` file to explain what this license is:
 
   0. You just DO WHAT THE FUCK YOU WANT TO.
 ```
+
+and... a badge!
+
+```
+[![License](https://upload.wikimedia.org/wikipedia/commons/0/0a/WTFPL_badge.svg)](https://spdx.org/licenses/WTFPL) 
+```
+
 
 ## What else?
 
