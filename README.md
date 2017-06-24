@@ -257,7 +257,13 @@ Here I tell `standard` auto fix issues that can be, and ignore every thing outsi
 
 ### Contributing guidelines
 
-TODO s'inspirer de https://github.com/chartjs/chartjs-plugin-annotation/blob/master/CONTRIBUTING.md
+It can happen that someone wants to fix a bug in that small lib of mine.
+
+In that case, the usage is to read the `CONTRIBUTING.md` file to know how to contribute to a project.
+
+```
+TODO Copier contenu
+```
 
 
 ### TODO
