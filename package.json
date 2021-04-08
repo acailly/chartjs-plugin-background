@@ -1,6 +1,6 @@
 {
   "name": "chartjs-plugin-background",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Plugin for chart.js to set the background color of a chart",
   "main": "index.js",
   "scripts": {
