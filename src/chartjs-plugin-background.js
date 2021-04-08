@@ -1,18 +1,17 @@
-import Chart from 'chart.js'
+import { Chart } from 'chart.js'
 
 const plugin = {
-  beforeDraw: function (chartInstance) {
-    const {backgroundColor} = chartInstance.chart.options
+  id: 'background',
+  beforeDraw: function (chart, args, options) {
+    const {color} = options
 
-    if (backgroundColor) {
-      const ctx = chartInstance.chart.ctx
-      const canvas = chartInstance.chart.canvas
+    if (color) {
+      const ctx = chart.ctx
+      const canvas = chart.canvas
 
-      ctx.fillStyle = backgroundColor
+      ctx.fillStyle = color
       ctx.fillRect(0, 0, canvas.width, canvas.height)
     }
   }
 }
-
-export default plugin
-Chart.pluginService.register(plugin)
+Chart.register(plugin)
